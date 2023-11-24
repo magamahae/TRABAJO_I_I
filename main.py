@@ -62,6 +62,7 @@ def home():
             <p>Cohorte: DATA-FT17-G06</p>
             <!-- Reemplaza URL_DE_LA_IMAGEN con la URL real de la imagen -->
             <<img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">>
+            <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
         </body>
     </html>
 '''
