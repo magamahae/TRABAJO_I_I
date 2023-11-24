@@ -67,7 +67,15 @@ def home():
     </html>
 '''
 #1)---------------------año con mas horas jugadas para dicho género---------------#
-@app.get('/PlayTimeGenre')
+@app.get(path='/PlayTimeGenre',           
+         description = """ <font color="blue">
+                        INSTRUCCIONES<br>
+                        1. Haga clik en "Try it out".<br>
+                        2. Ingrese el genero en el box abajo.<br>
+                        3. Scrollear a "Resposes" "Año de lanzamiento con más horas jugadas para Género 
+                        </font>
+                        """,
+         tags=["Consultas Generales"])
 def PlayTimeGenre(genero: str):
     # Filtrar el DataFrame por el género proporcionado
     genre_df = df_games[df_games ['genres'] == genero]
