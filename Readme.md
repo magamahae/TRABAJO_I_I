@@ -110,17 +110,19 @@ Es importante destacar que todas estas funciones fueron implementadas en un ento
 
 #  INFORMACION ADICIONAL
 
-En los archivos proporcionados del desarrollo de este trabajo se encuentran en:
+Los archivos proporcionados del desarrollo de este trabajo se encuentran en:
 
 - API: 
-  - Funciones:[Enlace](https://github.com/magamahae/TRABAJO_I_I/blob/main/SCR/API_tablas_funciones.ipynb)
-  - Deploy: [enlace](https://trabajo-deploy.onrender.com/)
+  - Deploy: en Render/FastAPI [enlace](https://trabajo-deploy.onrender.com/)
+   
+  - Funciones: [enlace](https://github.com/magamahae/TRABAJO_I_I/blob/main/SCR/API_tablas_funciones.ipynb)
+ 
 - MODELO:
-  - Jupyter Notebook:
+  - Jupyter Notebook:[Enlace](https://github.com/magamahae/TRABAJO_I_I/blob/main/SCR/2_MODELOS.ipynb)
 - ETL/EDA:
-  - Jupyter Nootebok:
+  - Jupyter Nootebok:[enlace](https://github.com/magamahae/TRABAJO_I_I/tree/main/SCR)
 - VIDEO:
-  - Link:
+  - Link:[enlace]
 
 <hr>
 
