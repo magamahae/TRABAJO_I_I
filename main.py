@@ -149,21 +149,22 @@ def UserForGenre(genero: str):
          tags=["Consultas Generales"])
 def PlayTimeGenre(genero: str):
     # Verificar si el género está en la base de datos
-    if genero not in df_games['genres'].unique():
-        raise HTTPException(status_code=400, detail=f"Error: El género '{genero}' no es válido.")
+    if año not in df_3_1['year'].unique():
+        raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
-    # Filtrar el DataFrame por el género proporcionado
-    genre_df = df_games[df_games['genres'] == genero]
-
-    # Verificar si hay datos para el género seleccionado
-    if genre_df.empty:
-        raise HTTPException(status_code=404, detail=f"No hay datos para el género '{genero}' en la base de datos.")
-
-    # Encontrar el año con más horas jugadas
-    max_year = genre_df['release_year'].max()
+    # Filtrar el DataFrame df_top3 por el año proporcionado
+    top3_by_year = df_3_1[df_3_1['year'] == año]
     
-    # Retornar los valores solicitados
-    return {"Año de lanzamiento con más horas jugadas para Género {}: {}".format(genero, max_year)} 
+    # Crear la lista de diccionarios
+   
+    resultado = []
+    resultado = [{"Puesto {}: {}".format(row['rank'], row['title'])} for _, row in top3_by_year.iterrows()]
+    #for index, row in top3_by_year.iterrows():
+    #    puesto = row['rank']
+    #    titulo = row['title']
+    #    año = int(row['year'])
+    #    resultado.append({f"Puesto {puesto}": f"{titulo}"})
+    return resultado    
    
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
