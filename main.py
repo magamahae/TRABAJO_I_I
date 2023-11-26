@@ -137,34 +137,23 @@ def UserForGenre(genero: str):
     return {"Usuario con más horas jugadas para Género {}".format(genero): max_playtime, "Horas jugadas": horas_acum}     
 
 #3)--------------3 de juegos MÁS recomendados por usuarios ----------------------#
+@app.get('/UsersRecommend')
+def UsersRecommend(año: int):
+    # Verificar si el año proporcionado es válido
+    if año not in df_games_title['release_year'].unique():
+        raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
-@app.get('/UsersRecommend', 
-         description = """ <font color="blue">
-                        INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
-                        2. Ingrese el año en el box inferior. Ejemplo de año: 2011 (solo existen del 2011-2015)<br>
-                        3. Scrollear a "Resposes" top 3 de juegos MÁS recomendado 
-                        </font>
-                        """,
-         tags=["Consultas Generales"])
-def PlayTimeGenre(genero: str):
-    # Verificar si el género está en la base de datos
-    if genero not in df_games['genres'].unique():
-        raise HTTPException(status_code=400, detail=f"Error: El género '{genero}' no es válido.")
-
-    # Filtrar el DataFrame por el género proporcionado
-    genre_df = df_games[df_games['genres'] == genero]
-
-    # Verificar si hay datos para el género seleccionado
-    if genre_df.empty:
-        raise HTTPException(status_code=404, detail=f"No hay datos para el género '{genero}' en la base de datos.")
-
-    # Encontrar el año con más horas jugadas
-    max_year = genre_df['release_year'].max()
-
-    # Retornar los valores solicitados
-    return {"Año de lanzamiento con más horas jugadas para Género {}: {}".format(genero, max_year)} 
-   
+    # Filtrar el DataFrame df_top3 por el año proporcionado
+    top3_by_year = df_games_title[df_games_title['release_year'] == año]
+    
+    # Crear la lista de diccionarios
+    resultado = []
+    for index, row in top3_by_year.iterrows():
+        puesto = row['rank']
+        titulo = row['title']
+        año = int(row['release_year'])
+        resultado.append({f"Puesto {puesto}": f"{titulo}"})
+    return resultado   
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
 @app.get('/UsersWorstDeveloper', 
@@ -258,7 +247,7 @@ def recomendacion_juego(id_producto: int):
         raise HTTPException(status_code=404, detail=f"No se encontraron recomendaciones para el ID del juego '{id_producto}'.")
 #7)-----------------------------user-item-------------------------------------------#
 
-@app.get('/recomendacion_juego', description=""" 
+@app.get('/recomendacion_juego_usuario', description=""" 
                     INSTRUCCIONES<br>
                     1. Para empezar haga click en -> "Try it out".<br>
                     2. Ingrese el ID del juego en el recuadro inferior. Ejemplo de ID: 449940 (610660, 761140, etc)<br>
