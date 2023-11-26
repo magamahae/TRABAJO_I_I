@@ -149,11 +149,11 @@ def UserForGenre(genero: str):
          tags=["Consultas Generales"])
 def PlayTimeGenre(genero: str):
     # Verificar si el género está en la base de datos
-    if año not in df_3_1['year'].unique():
+    if año not in df_games_title['year'].unique():
         raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
     # Filtrar el DataFrame df_top3 por el año proporcionado
-    top3_by_year = df_3_1[df_3_1['year'] == año]
+    top3_by_year = df_games_title[df_games_title['year'] == año]
     
     # Crear la lista de diccionarios
    
