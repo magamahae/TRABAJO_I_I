@@ -253,7 +253,7 @@ def recomendacion_juego(id_producto: int):
         raise HTTPException(status_code=404, detail=f"No se encontraron recomendaciones para el ID del juego '{id_producto}'.")
 #7)-----------------------------user-item-------------------------------------------#
 
-@app.get('/recomendacion_juego', description=""" 
+@app.get('/recomendacion_juego_u', description=""" 
                     INSTRUCCIONES<br>
                     1. Para empezar haga click en -> "Try it out".<br>
                     2. Ingrese el ID del juego en el recuadro inferior. Ejemplo de ID: 449940 (610660, 761140, etc)<br>
