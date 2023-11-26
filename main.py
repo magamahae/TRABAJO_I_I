@@ -65,11 +65,11 @@ def home():
         </style>
     </head>
     <body>
+        <img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">
         <h1>PROYECTO INDIVIDUAL Nº1</h1>
         <h2>Machine Learning Operations (MLOps)</h2>
         <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
         <p>Cohorte: DATA-FT17-G06</p>
-        <img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">
     </body>
 </html>
 
