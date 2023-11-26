@@ -70,6 +70,7 @@ def home():
         <h2>Machine Learning Operations (MLOps)</h2>
         <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
         <p>Cohorte: DATA-FT17-G06</p>
+        <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
     </body>
 </html>
 
