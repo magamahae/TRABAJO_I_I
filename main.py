@@ -141,20 +141,21 @@ def UserForGenre(genero: str):
 @app.get('/UsersRecommend')
 def UsersRecommend(año: int):
     # Verificar si el año proporcionado es válido
-    if año not in df_games_title['release_year'].unique():
+    if año not in df_games_title['year'].unique():
         raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
     # Filtrar el DataFrame df_top3 por el año proporcionado
-    top3_by_year = df_games_title[df_games_title['release_year'] == año]
+    top3_by_year = df_games_title[df_games_title['year'] == año]
     
     # Crear la lista de diccionarios
     resultado = []
     for index, row in top3_by_year.iterrows():
         puesto = row['rank']
         titulo = row['title']
-        año = int(row['release_year'])
+        año = int(row['year'])
         resultado.append({f"Puesto {puesto}": f"{titulo}"})
     return resultado   
+    
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
 @app.get('/UsersWorstDeveloper', 
@@ -184,8 +185,8 @@ def UsersWorstDeveloper(año: int):
 
     # Formatear el resultado como lista de diccionarios
     result = [{"Puesto {}: {}".format(rank, developer)} for rank, developer in zip(top3_worst_developer['rank'], top3_worst_developer['developer'])]
-
-    return result
+    result_invertido = result[::-1]
+    return result_invertido
 
 #----------------------Analisis de Sentimiento----------------------------------#
 
