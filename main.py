@@ -27,43 +27,46 @@ def home():
     # Define el mensaje con HTML, incluyendo la imagen
     return '''  
     <html>
-        <head>
-            <title>PROYECTO INDIVIDUAL Nº1 - MLOps</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    padding: 20px;
-                    background-color: #f0f0f0;
-                }
-                h1 {
-                    color: #333;
-                    text-align: center;
-                }
-                h2 {
-                    color: #555;
-                    text-align: center;
-                }
-                p {
-                    color: #666;
-                    text-align: center;
-                    font-size: 18px;
-                    margin-top: 20px;
-                }
-                img {
-                    display: block;
-                    margin: 0 auto;
-                    margin-top: 20px;
-                    max-width: 100%;
-                    height: auto;
-                }
-            </style>
-        </head>
+    <head>
+        <title>PROYECTO INDIVIDUAL Nº1 - MLOps</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f0f0f0;
+                background-image: url('https://www.mundodeportivo.com/alfabeta/hero/2023/07/steam-logo-pintura.1689596852.7651.jpg?width=1200&aspect_ratio=16:9');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            h1 {
+                color: #333;
+                text-align: center;
+            }
+            h2 {
+                color: #555;
+                text-align: center;
+            }
+            p {
+                color: #666;
+                text-align: center;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+            img {
+                display: block;
+                margin: 0 auto;
+                margin-top: 20px;
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
+    </head>
         <body>
             <h1>PROYECTO INDIVIDUAL Nº1</h1>
             <h2>Machine Learning Operations (MLOps)</h2>
             <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
             <p>Cohorte: DATA-FT17-G06</p>
-            <!-- Reemplaza URL_DE_LA_IMAGEN con la URL real de la imagen -->
             <<img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">>
         </body>
     </html>
