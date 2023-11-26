@@ -113,7 +113,7 @@ Es importante destacar que todas estas funciones fueron implementadas en un ento
 En los archivos proporcionados del desarrollo de este trabajo se encuentran en:
 
 - API: 
-  - Funciones:
+  - Funciones:[Enlace](https://github.com/magamahae/TRABAJO_I_I/blob/main/SCR/API_tablas_funciones.ipynb)
   - Deploy: [enlace](https://trabajo-deploy.onrender.com/)
 - MODELO:
   - Jupyter Notebook:
