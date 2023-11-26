@@ -251,7 +251,7 @@ def recomendacion_juego(id_producto: int):
 @app.get('/recomendacion_juego_usuario', description=""" 
                     INSTRUCCIONES<br>
                     1. Para empezar haga click en -> "Try it out".<br>
-                    2. Ingrese el ID del juego en el recuadro inferior. Ejemplo de ID: 449940 (610660, 761140, etc)<br>
+                    2. Ingrese el ID del usuario en el recuadro inferior. Ejemplo de UD_USIARIO: sdq101 (djm3h, HackingPro1, etc)<br>
                     3. Click a "Execute" para juegos recomendados.
                     """,
          tags=["Recomendación"])
