@@ -40,36 +40,39 @@ def home():
                 background-repeat: no-repeat;
             }
             h1 {
-                color: #333;
+                color: #000; /* Cambiado a negro */
                 text-align: center;
+                font-size: 28px; /* Tamaño de fuente aumentado */
             }
             h2 {
-                color: #555;
+                color: #000; /* Cambiado a negro */
                 text-align: center;
+                font-size: 24px; /* Tamaño de fuente aumentado */
             }
             p {
-                color: #666;
+                color: #000; /* Cambiado a negro */
                 text-align: center;
-                font-size: 18px;
+                font-size: 20px; /* Tamaño de fuente aumentado */
                 margin-top: 20px;
             }
             img {
                 display: block;
                 margin: 0 auto;
-                margin-top: 20px;
                 max-width: 100%;
                 height: auto;
+                margin-top: -40px; /* Ajuste para mover el logo arriba de todo */
             }
         </style>
     </head>
-        <body>
-            <h1>PROYECTO INDIVIDUAL Nº1</h1>
-            <h2>Machine Learning Operations (MLOps)</h2>
-            <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
-            <p>Cohorte: DATA-FT17-G06</p>
-            <<img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">>
-        </body>
-    </html>
+    <body>
+        <h1>PROYECTO INDIVIDUAL Nº1</h1>
+        <h2>Machine Learning Operations (MLOps)</h2>
+        <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
+        <p>Cohorte: DATA-FT17-G06</p>
+        <img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">
+    </body>
+</html>
+
 '''
 
 #1)---------------------año con mas horas jugadas para dicho género---------------#
