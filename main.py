@@ -138,7 +138,15 @@ def UserForGenre(genero: str):
     return {"Usuario con más horas jugadas para Género {}".format(genero): max_playtime, "Horas jugadas": horas_acum}     
 
 #3)--------------3 de juegos MÁS recomendados por usuarios ----------------------#
-@app.get('/UsersRecommend')
+@app.get('/UsersRecommend',  
+         description = """ <font color="blue">
+                        INSTRUCCIONES<br>
+                        1. Haga clik en "Try it out".<br>
+                        2. Ingrese el año en el box inferior. Ejemplo de año: 2011 (solo existen del 2011-2015)<br>
+                        3. Scrollear a "Resposes"  top 3 de juegos MÁS recomendados para este año
+                        </font>
+                        """,
+         tags=["Consultas Generales"])
 def UsersRecommend(año: int):
     # Verificar si el año proporcionado es válido
     if año not in df_games_title['year'].unique():
