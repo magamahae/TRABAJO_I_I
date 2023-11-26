@@ -147,8 +147,8 @@ def UserForGenre(genero: str):
                         </font>
                         """,
          tags=["Consultas Generales"])
-def PlayTimeGenre(genero: str):
-    # Verificar si el género está en la base de datos
+def UsersRecommend(año: int):
+    # Verificar si el año proporcionado es válido
     if año not in df_games_title['year'].unique():
         raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
@@ -159,13 +159,7 @@ def PlayTimeGenre(genero: str):
    
     resultado = []
     resultado = [{"Puesto {}: {}".format(row['rank'], row['title'])} for _, row in top3_by_year.iterrows()]
-    #for index, row in top3_by_year.iterrows():
-    #    puesto = row['rank']
-    #    titulo = row['title']
-    #    año = int(row['year'])
-    #    resultado.append({f"Puesto {puesto}": f"{titulo}"})
-    return resultado    
-   
+    return resultado      
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
 @app.get('/UsersWorstDeveloper', 
