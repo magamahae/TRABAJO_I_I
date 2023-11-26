@@ -26,7 +26,7 @@ df_modelo_u=pd.read_parquet('DATA/modelo_rec_u.parquet')
 def home():
     # Define el mensaje con HTML, incluyendo la imagen
     return '''  
-      <html>
+    <html>
         <head>
             <title>PROYECTO INDIVIDUAL Nº1 - MLOps</title>
             <style>
@@ -65,7 +65,6 @@ def home():
             <p>Cohorte: DATA-FT17-G06</p>
             <!-- Reemplaza URL_DE_LA_IMAGEN con la URL real de la imagen -->
             <<img decoding="async" width="400" height="156" src="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg" alt="Henry Logo" class="wp-image-5334" srcset="https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo.jpg 400w, https://neurona-ba.com/wp-content/uploads/2021/07/HenryLogo-300x117.jpg 300w" sizes="(max-width: 400px) 100vw, 400px">>
-            <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
         </body>
     </html>
 '''
@@ -138,28 +137,34 @@ def UserForGenre(genero: str):
     return {"Usuario con más horas jugadas para Género {}".format(genero): max_playtime, "Horas jugadas": horas_acum}     
 
 #3)--------------3 de juegos MÁS recomendados por usuarios ----------------------#
-@app.get('/UsersRecommend',  
+
+@app.get('/UsersRecommend', 
          description = """ <font color="blue">
                         INSTRUCCIONES<br>
                         1. Haga clik en "Try it out".<br>
                         2. Ingrese el año en el box inferior. Ejemplo de año: 2011 (solo existen del 2011-2015)<br>
-                        3. Scrollear a "Resposes"  top 3 de juegos MÁS recomendados para este año
+                        3. Scrollear a "Resposes" top 3 de juegos MÁS recomendado 
                         </font>
                         """,
          tags=["Consultas Generales"])
-def UsersRecommend(año: int):
-    # Verificar si el año proporcionado es válido
-    if año not in df_games_title['year'].unique():
-        raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
+def PlayTimeGenre(genero: str):
+    # Verificar si el género está en la base de datos
+    if genero not in df_games['genres'].unique():
+        raise HTTPException(status_code=400, detail=f"Error: El género '{genero}' no es válido.")
 
-    # Filtrar el DataFrame df_top3 por el año proporcionado
-    top3_by_year = df_games_title[df_games_title['year'] == año]
-    
-    # Crear la lista de diccionarios
-    resultado = []
-    resultado = [{"Puesto {}: {}".format(row['rank'], row['title'])} for _, row in top3_by_year.iterrows()]
-    return resultado   
-    
+    # Filtrar el DataFrame por el género proporcionado
+    genre_df = df_games[df_games['genres'] == genero]
+
+    # Verificar si hay datos para el género seleccionado
+    if genre_df.empty:
+        raise HTTPException(status_code=404, detail=f"No hay datos para el género '{genero}' en la base de datos.")
+
+    # Encontrar el año con más horas jugadas
+    max_year = genre_df['release_year'].max()
+
+    # Retornar los valores solicitados
+    return {"Año de lanzamiento con más horas jugadas para Género {}: {}".format(genero, max_year)} 
+   
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
 @app.get('/UsersWorstDeveloper', 
@@ -189,8 +194,8 @@ def UsersWorstDeveloper(año: int):
 
     # Formatear el resultado como lista de diccionarios
     result = [{"Puesto {}: {}".format(rank, developer)} for rank, developer in zip(top3_worst_developer['rank'], top3_worst_developer['developer'])]
-    result_invertido = result[::-1]
-    return result_invertido
+
+    return result
 
 #----------------------Analisis de Sentimiento----------------------------------#
 
@@ -253,10 +258,10 @@ def recomendacion_juego(id_producto: int):
         raise HTTPException(status_code=404, detail=f"No se encontraron recomendaciones para el ID del juego '{id_producto}'.")
 #7)-----------------------------user-item-------------------------------------------#
 
-@app.get('/recomendacion_juego_usuario', description=""" 
+@app.get('/recomendacion_juego', description=""" 
                     INSTRUCCIONES<br>
                     1. Para empezar haga click en -> "Try it out".<br>
-                    2. Ingrese el ID del usuario en el recuadro inferior. Ejemplo de UD_USIARIO: sdq101 (djm3h, HackingPro1, etc)<br>
+                    2. Ingrese el ID del juego en el recuadro inferior. Ejemplo de ID: 449940 (610660, 761140, etc)<br>
                     3. Click a "Execute" para juegos recomendados.
                     """,
          tags=["Recomendación"])
