@@ -161,7 +161,7 @@ def PlayTimeGenre(genero: str):
 
     # Encontrar el año con más horas jugadas
     max_year = genre_df['release_year'].max()
-    formatted_output = [item[0] for item in max_year]
+    
     # Retornar los valores solicitados
     return {"Año de lanzamiento con más horas jugadas para Género {}: {}".format(genero, max_year)} 
    
