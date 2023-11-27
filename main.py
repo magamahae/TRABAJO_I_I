@@ -150,7 +150,7 @@ def UserForGenre(genero: str):
          description = """ <font color="blue">
                         INSTRUCCIONES<br>
                         1. Haga clik en "Try it out".<br>
-                        2. Ingrese el año en el box inferior. Ejemplo de año: 2011 (solo existen del 2011-2015)<br>
+                        2. Ingrese el año en el box inferior. Ejemplo de año: 2011 (solo existen del 2010-2015)<br>
                         3. Scrollear a "Resposes" top 3 de juegos MÁS recomendado 
                         </font>
                         """,
