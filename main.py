@@ -197,11 +197,10 @@ def UsersWorstDeveloper(año: int):
     # Obtener el top 3 de desarrolladoras con juegos MENOS recomendados y sus valores según rank
     top3_worst_developer = developer_by_year.sort_values(by='rank', ascending=False).head(3)
 
-    # Formatear el resultado como lista de listas
-    result = [[f"Puesto {rank}: {developer}"] for rank, developer in zip(top3_worst_developer['rank'], top3_worst_developer['developer'])]
+    # Formatear el resultado como lista de diccionarios
+    result = [{"Puesto {}: {}".format(rank, developer)} for rank, developer in zip(top3_worst_developer['rank'], top3_worst_developer['developer'])]
 
     return result
-
 #----------------------Analisis de Sentimiento----------------------------------#
 
 @app.get('/sentiment_analysis',
