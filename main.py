@@ -71,7 +71,7 @@ def home():
         <p>Nombre: MARTINEZ HERRERO MARIA GABRIELA</p>
         <p>Cohorte: DATA-FT17-G06</p>
         <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
-         <p>Sini haga click en el siguiente link <a href="https://trabajo-deploy.onrender.com/docs" target="_blank"> </a></p>
+         <p><a href="https://trabajo-deploy.onrender.com/docs" target="_blank"> Sino haga click en el link</a></p>
     </body>
 </html>
 
