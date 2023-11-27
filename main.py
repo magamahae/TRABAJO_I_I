@@ -186,11 +186,6 @@ def UsersRecommend(año: int):
                         """,
          tags=["Consultas Generales"])
 def UsersWorstDeveloper(año: int):
-    # Verificar si el año está en el rango permitido
-    años_permitidos = [2011, 2012, 2013, 2014, 2015]
-    if año not in años_permitidos:
-        raise HTTPException(status_code=400, detail=f"Error: El año '{año}' no es válido. Solo se permiten años en el rango 2011-2015.")
-
     # Filtrar el DataFrame df_developer por el año proporcionado
     developer_by_year = df_developers[df_developers['year'] == año]
 
@@ -200,11 +195,13 @@ def UsersWorstDeveloper(año: int):
 
     # Obtener el top 3 de desarrolladoras con juegos MENOS recomendados y sus valores según rank
     top3_worst_developer = developer_by_year.sort_values(by='rank', ascending=False).head(3)
+    resultado = []
+    for index, row in df_developers.iterrows():
+        puesto = row['rank']
+        developers = row['developer'])
+        resultado.append({f"Puesto {puesto}": f"{developers}"})
+    return resultado  
 
-    # Formatear el resultado como lista de diccionarios
-    result = [{"Puesto {}: {}".format(rank, developer)} for rank, developer in zip(top3_worst_developer['rank'], top3_worst_developer['developer'])]
-
-    return result
 #----------------------Analisis de Sentimiento----------------------------------#
 
 @app.get('/sentiment_analysis',
