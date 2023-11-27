@@ -166,7 +166,9 @@ def UsersRecommend(año: int):
    
     resultado = []
     resultado = [f'{{"Puesto {row["rank"]}": {row["title"]}}}' for _, row in top3_by_year.iterrows()]
-    return ", ".join(resultado)
+    resultado_formateado = ", ".join(resultado)
+    resultado_formateado_sin_barras = resultado_formateado.replace("\\", "")
+    return resultado_formateado_sin_barras
         
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
