@@ -205,7 +205,9 @@ def UsersWorstDeveloper(año: int):
         puesto = row['rank']
         developers = row['developer']
         resultado.append({f"Puesto {puesto}": f"{developers}"})
-        
+    # Ordenar el resultado por puesto de manera ascendente
+    resultado = sorted(resultado, key=lambda x: int(list(x.keys())[0].split()[1]))
+  
     return resultado
 
 #----------------------Analisis de Sentimiento----------------------------------#
