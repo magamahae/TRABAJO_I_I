@@ -165,11 +165,16 @@ def UsersRecommend(año: int):
     
     # Crear la lista de diccionarios
    
-    resultado = []
-    resultado = [f'{{"Puesto {row["rank"]}": {row["title"]}}}' for _, row in top3_by_year.iterrows()]
-    resultado_formateado = ", ".join(resultado)
-    resultado_formateado_sin_barras = resultado_formateado.replace("\\", "")
-    return resultado_formateado_sin_barras
+   resultado = []
+    # Itera sobre las filas del DataFrame top3_por_año
+    for index, row in top3_by_year.iterrows():
+        puesto = row['rank']
+        titulo = row['title']
+        año = int(row['year'])   
+       # Agrega un diccionario a la lista de resultados con la estructura {f"Puesto {puesto}": f"{titulo}"}
+        resultado.append({f"Puesto {puesto}": f"{titulo}"})
+    # Devuelve la lista de resultados
+    return resultado
         
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
