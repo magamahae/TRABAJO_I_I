@@ -165,8 +165,9 @@ def UsersRecommend(año: int):
     # Crear la lista de diccionarios
    
     resultado = []
-    resultado = [{"Puesto {}: {}".format(row['rank'], row['title'])} for _, row in top3_by_year.iterrows()]
-    return resultado      
+    resultado = [f'{{"Puesto {row["rank"]}": {row["title"]}}}' for _, row in top3_by_year.iterrows()]
+    return ", ".join(resultado)
+        
 #4)------------------- top 3 de desarrolladoras con juegos MENOS recomendados-----------#
 
 @app.get('/UsersWorstDeveloper', 
