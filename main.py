@@ -186,21 +186,28 @@ def UsersRecommend(año: int):
                         """,
          tags=["Consultas Generales"])
 def UsersWorstDeveloper(año: int):
-    # Filtrar el DataFrame df_developer por el año proporcionado
-    developer_by_year = df_developers[df_developers['year'] == año]
+    try:
+        # Verificar si el año proporcionado es válido
+        if año not in df_developers['year'].unique():
+            raise HTTPException(status_code=404, detail=f"El año {año} no existe en los datos.")
 
-    # Verificar si hay datos para el año seleccionado
-    if developer_by_year.empty:
-        raise HTTPException(status_code=404, detail=f"No hay datos para el año '{año}' en la base de datos.")
+        # Filtrar el DataFrame df_developer por el año proporcionado
+        developer_by_year = df_developers[df_developers['year'] == año]
 
-    # Obtener el top 3 de desarrolladoras con juegos MENOS recomendados y sus valores según rank
-    top3_worst_developer = developer_by_year.sort_values(by='rank', ascending=False).head(3)
-    resultado = []
-    for index, row in df_developers.iterrows():
-        puesto = row['rank']
-        developers = row['developer'])
-        resultado.append({f"Puesto {puesto}": f"{developers}"})
-    return resultado  
+        # Verificar si hay datos para el año seleccionado
+        if developer_by_year.empty:
+            raise HTTPException(status_code=404, detail=f"No hay datos para el año {año} en la base de datos.")
+
+        # Obtener el top 3 de desarrolladoras con juegos MENOS recomendados y sus valores según rank
+        top3_worst_developer = developer_by_year.sort_values(by='rank', ascending=False).head(3)
+
+        resultado = []
+        for index, row in top3_worst_developer.iterrows():
+            puesto = row['rank']
+            developers = row['developer']
+            resultado.append({f"Puesto {puesto}": f"{developers}"})
+        
+        return resultado
 
 #----------------------Analisis de Sentimiento----------------------------------#
 
